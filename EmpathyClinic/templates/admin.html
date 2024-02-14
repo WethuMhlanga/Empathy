@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Admin Dashboard - Empathy Clinic</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .w3-content {
+      margin-top: 80px;
+    }
+
+    .appointment-list {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #008a6a;
+      color: white;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1>Admin Dashboard - Appointments</h1>
+
+  <div class="w3-content appointment-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number of People</th>
+          <th>Date and Time</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for appointment in appointments %}
+        <tr>
+          <td>{{ appointment['name'] }}</td>
+          <td>{{ appointment['people'] }}</td>
+          <td>{{ appointment['date'] }}</td>
+          <td>{{ appointment['message'] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>

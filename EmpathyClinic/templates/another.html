@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Empathy Clinic</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #f8f8f8;
+      color: #333;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    /* Navbar styles */
+    .w3-top {
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      transition: background-color 0.3s, opacity 0.3s;
+      opacity: 1;
+    }
+
+    .w3-bar {
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      letter-spacing: 2px;
+      transition: background-color 0.3s;
+    }
+
+    .w3-bar a {
+      padding: 15px 20px !important;
+      color: #8FC1B5;
+    }
+
+    .w3-bar a:hover {
+      background-color: #008a6a;
+      color: #fff;
+    }
+
+    /* Hidden class for fading out */
+    .w3-top.hidden {
+      opacity: 0;
+    }
+
+    /* Header styles */
+    .header {
+      position: relative;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Page content styles */
+    .w3-content {
+      margin-top: 80px;
+    }
+
+    /* About Section styles */
+    #about {
+      padding: 40px 0;
+      background-color: #8FC1B5;
+      color: #fff;
+    }
+
+    .w3-col img {
+      border-radius: 10px;
+      width: 100%;
+      height: auto;
+    }
+
+    /* Price Section styles */
+    #menu {
+      padding: 40px 0;
+      position: relative;
+      background-color: #589A8D;
+      color: #fff;
+    }
+
+    .w3-col.l6,
+    .w3-col.l6 img {
+      border-radius: 10px;
+      width: 100%;
+      height: auto;
+    }
+
+    .w3-card-4 {
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #068574;
+      color: #fff;
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+
+    .w3-card-4:hover {
+      transform: scale(1.05);
+    }
+
+    .w3-container {
+      padding: 20px;
+    }
+
+    /* Contact Section styles */
+    #contact {
+      padding: 40px 0;
+      background-color: #8FC1B5;
+      color: #fff;
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    /* Footer styles */
+    footer {
+      background-color: #8FC1B5;
+      color: #8FC1B5;
+      padding: 20px 0;
+    }
+
+    /* Automatic Slideshow styles */
+    .slideshow-container {
+      max-width: 1000px;
+      position: relative;
+      margin: auto;
+    }
+
+    /* Caption text */
+    .text {
+      color: #f2f2f2;
+      font-size: 15px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+
+    /* The dots/bullets/indicators */
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active,
+    .dot:hover {
+      background-color: #717171;
+    }
+
+    /* Fading animation */
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+      .prev,
+      .next,
+      .text {
+        font-size: 11px
+      }
+    }
+
+    /* Logo in the navigation */
+    .logo img {
+      width: 40px;
+      height: auto;
+    }
+
+    .section {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Appointments</h1>
+    {{ appointments | safe }}
+
+  <!-- Navbar (sit on top) -->
+  <section class="w3-top" id="myNavbar">
+    <div class="w3-bar w3-white w3-padding">
+      <div class="logo">
+        <a href="#home" class="w3-bar-item w3-button">
+          <img src="{{ url_for('static', filename='empathy logo.jpeg') }}" alt="Logo">
+
+        </a>
+      </div>
+      <div class="w3-right w3-hide-small">
+        <a href="#about" class="w3-bar-item w3-button">About</a>
+        <a href="#menu" class="w3-bar-item w3-button">Services</a>
+        <a href="#contact" class="w3-bar-item w3-button">Contact</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Page content -->
+  <div class="w3-content">
+
+    <!-- About Section -->
+    <section class="w3-row w3-padding-64 section" id="about">
+      <div class="w3-col m6 w3-padding-large w3-hide-small">
+        <img src="{{ url_for('static', filename='empathy logo.jpeg') }}" class="w3-round w3-image w3-opacity-min" alt="Table Setting">
+      </div>
+
+      <div class="w3-col m6 w3-padding-large">
+        <h1 class="w3-center">About Clinic</h1><br>
+        <p class="w3-large">It is part of a network of clinics providing high-quality, affordable and accessible
+          care to South Africans. This network is an alternative to free public health facilities for millions of
+          South Africans, thus improving collective community health, reducing loss of productivity due to health
+          care seeking and illness, improving outcomes for children, and reducing the burden on overstretched state
+          health care facilities. Clinics are owned and run by nurses who are empowered by owning their own
+          businesses and creating agency and innovation in how they provide critical <span class="w3-tag
+            w3-light-grey">healthcare</span> services.</p>
+        <p class="w3-large w3-text-grey w3-hide-medium">Empathy is run by Promise Magagula, a medical
+          professional and someone who cares about giving the best healthcare services for you and your family.
+          Her goal is to bring better healthcare experiences and people's trust in the South African healthcare
+          system. She aims to bring quality, efficient and most of all affordable healthcare for the community.
+        </p>
+      </div>
+    </section>
+
+
+
+    <!-- Price Section -->
+    <section class="w3-row w3-padding-64 section" id="menu">
+      <h1 class="w3-center w3-text-white">Our Services</h1>
+
+      <div class="w3-col l4 w3-padding-large">
+        <div class="w3-card-4">
+          <div class="w3-container">
+            <h3>Child Health</h3>
+            <p>It includes child health check with medication at R100</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-col l4 w3-padding-large">
+        <div class="w3-card-4">
+          <div class="w3-container">
+            <h3>E.P.I</h3>
+            <p>Immunization at R100</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-col l4 w3-padding-large">
+        <div class="w3-card-4">
+          <div class="w3-container">
+            <h3>IMCI</h3>
+            <p>Integrated Management of Childhood illness at R100</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-col l4 w3-padding-large">
+        <div class="w3-card-4">
+          <div class="w3-container">
+            <h3>Reproductive Health</h3>
+            <p>Family Planning at R150, Postnatal Care at R200, Antenatal Care at R300(first visit) R150 (follow up),
+              Cervical Screening(papsmears) at R200</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-col l4 w3-padding-large">
+        <div class="w3-card-4">
+          <div class="w3-container">
+            <h3>Curative Services</h3>
+            <p>Services for Kids are R100 and for Adults is R200</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-col l4 w3-padding-large">
+        <div class="w3-card-4">
+          <div class="w3-container">
+            <h3>HCT</h3>
+            <p>HIV counseling and testing at R50</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="w3-col l4 w3-padding-large">
+        <div class="w3-card-4">
+          <div class="w3-container">
+            <h3>ART Initiation</h3>
+            <p>Antiretroviral therapy for people with HIV at R200</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  
+
+    <!-- Contact Section -->
+    <section class="w3-container w3-padding-64 section" id="contact">
+      <h1 text-align="center";>Contact</h1><br>
+      <p>We offer affordable healthcare services for families and individuals. We understand your needs and we
+        will cater the health services to satisfy your health needs. Do not hesitate to contact us.</p>
+      <p class="w3-text-blue-grey w3-large"><b>Healthcare Service, 19 Freedom Nkosi Street Sidlamafa,
+          Goodluck/Phosaville Taxi Rank Kamhlushwa</b></p>
+      <h1 text-align="center";>Clinic Service Offerings</h1>
+      <ul class="w3-text-grey">
+        <li>Monday to Friday: 07:30 to 18:00</li>
+        <li>Saturday: 08:00 to 16:00 (from 16:00 by appointment ONLY)</li>
+        <li>Sunday: by appointment ONLY</li>
+      </ul><br>
+
+      <p>You can also contact us by phone 082 706 5767, or you can send us a message here:</p>
+      <form action="/submit" method="POST">
+        <p><input class="w3-input w3-padding-16" type="text" placeholder="Name" required name="Name"></p>
+        <p><input class="w3-input w3-padding-16" type="number" placeholder="How many people" required
+            name="People"></p>
+        <p><input class="w3-input w3-padding-16" type="datetime-local" placeholder="Date and time" required
+            name="date" value="2020-11-16T20:00"></p>
+        <p><input class="w3-input w3-padding-16" type="text" placeholder="Message \ Special requirements" required
+            name="Message"></p>
+        <p><button class="w3-button w3-light-grey w3-section" type="submit">SEND MESSAGE</button></p>
+      </form>
+    </section>
+
+    <!-- End page content -->
+  </div>
+
+  <!-- Footer -->
+  <footer class="w3-center w3-light-grey w3-padding-32">
+    <p>Powered by <a href="www.empathy.co.za" title="Empathy.co.za" target="_blank"
+        class="w3-hover-text-green">Empathy.co.za</a></p>
+  </footer>
+
+  <!-- Include jQuery (you can also use vanilla JavaScript) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Script for smooth scrolling and fading navigation -->
+  <script>
+    $(document).ready(function () {
+      // Add smooth scrolling to all links
+      $("a").on('click', function (event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+
+          var hash = this.hash;
+
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function () {
+            window.location.hash = hash;
+          });
+        }
+      });
+    });
+  </script>
+
+  <!-- Automatic Slideshow script -->
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {
+        slideIndex = 1
+      }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 3000); // Change slide every 3 seconds
+    }
+  </script>
+
+</body>
+
+</html>
