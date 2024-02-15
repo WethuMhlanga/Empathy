@@ -82,4 +82,4 @@ def submit():
        return render_template('some_other_page.html')
 
 if __name__ == '__main__':
-   app.run(debug=True)
+   app.run(port=int(os.environ.get("PORT", 5000)))
