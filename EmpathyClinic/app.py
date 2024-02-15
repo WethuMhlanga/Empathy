@@ -56,7 +56,7 @@ def submit():
             return f"Error: {e}"
     else:
         # If it's a GET request, you might want to redirect or render a different page
-        return render_template('some_other_page.html')
+        return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(port=int(os.environ.get("PORT", 5000)))
