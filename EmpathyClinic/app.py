@@ -21,7 +21,7 @@ def connect_to_database():
 # Define the route for rendering the form and the admin dashboard
 @app.route('/')
 def index():
-    return render_template('another.html')  # Change to your HTML file name
+    return render_template('index.html')  # HTML file name
 
 @app.route('/admin')
 def admin_dashboard():
