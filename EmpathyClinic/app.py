@@ -19,6 +19,11 @@ class Appointment(db.Model):
     date = db.Column(db.String(255))
     message = db.Column(db.String(255))
 
+# Create the database tables before the first request is handled
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
 # Define the route for rendering the form and the admin dashboard
 @app.route('/')
 def index():
@@ -56,7 +61,7 @@ def submit():
             return f"Error: {e}"
     else:
         # If it's a GET request, you might want to redirect or render a different page
-        return render_template('index.html')
+        return render_template('some_other_page.html')
 
 if __name__ == '__main__':
     app.run(port=int(os.environ.get("PORT", 5000)))
