@@ -3,7 +3,7 @@ cachetools==5.3.2
 certifi==2024.2.2
 charset-normalizer==3.3.2
 click==8.1.7
-Flask==3.0.2
+Flask==2.2.3
 Flask-SQLAlchemy==2.5.1
 google-auth==2.27.0
 google-auth-oauthlib==1.2.0
@@ -38,4 +38,4 @@ StrEnum==0.4.15
 typing_extensions==4.9.0
 tzdata==2023.4
 urllib3==2.2.0
-Werkzeug==3.0.1
+Werkzeug==2.0.3
